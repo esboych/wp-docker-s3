@@ -9,8 +9,6 @@ This repository contains the Terraform code to deploy a WordPress site on AWS us
 - [Usage](#usage)
 - [Configuration](#configuration)
 - [Architecture](#architecture)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Prerequisites
 
