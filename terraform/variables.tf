@@ -69,7 +69,7 @@ variable "ecs_task_family" {
 
 variable "ecr_image" {
   description = "ECR image URL"
-  default     = "<aws_account_id>.dkr.ecr.us-east-1.amazonaws.com/raketech:latest"
+  default     = "<aws_account_id>.dkr.ecr.us-east-1.amazonaws.com/wp:latest"
 }
 
 variable "ecs_service_name" {

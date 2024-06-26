@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "wordpress" {
-  name                 = "raketech"
+  name                 = "wp"
   image_tag_mutability = "MUTABLE"
 
 }

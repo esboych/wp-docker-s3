@@ -23,20 +23,13 @@ Before you begin, ensure you have the following installed on your local machine:
 
 ## Installation
 
-1. Clone the repository:
-
-    ```bash
-    git clone https://github.com/yourusername/your-repo-name.git
-    cd your-repo-name
-    ```
-
-2. Configure AWS CLI with your credentials:
+1. Configure AWS CLI with your credentials:
 
     ```bash
     aws configure
     ```
 
-3. Initialize Terraform:
+2. Initialize Terraform:
 
     ```bash
     terraform init
@@ -50,13 +43,13 @@ Before you begin, ensure you have the following installed on your local machine:
 
     ```bash
     # Build Docker image
-    docker build -t your-repo-name .
+    docker build -t wp .
 
     # Tag Docker image
-    docker tag your-repo-name:latest 123456789012.dkr.ecr.us-east-1.amazonaws.com/your-repo-name:latest
+    docker tag wp:latest <AWS-ACCOUNT-ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/wp:latest
 
     # Push Docker image
-    docker push 123456789012.dkr.ecr.us-east-1.amazonaws.com/your-repo-name:latest
+    docker push <AWS-ACCOUNT-ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/wp:latest
     ```
 
 2. **Apply Terraform Configuration:**
@@ -76,7 +69,7 @@ Before you begin, ensure you have the following installed on your local machine:
 
 ## Configuration
 
-Customize your deployment by modifying the variables in `variables.tf`. Here are some of the key variables:
+Customize your deployment by modifying the variables in `variables.tf`:
 
 - `db_username`: The database username
 - `db_password`: The database password (required at runtime)
@@ -92,13 +85,4 @@ The architecture includes the following AWS components:
 - **RDS**: MySQL database for WordPress
 - **S3**: Bucket for storing media uploads
 
-![Architecture Diagram](path/to/architecture-diagram.png)
-
-## Contributing
-
-Contributions are welcome! Please submit a pull request or open an issue to discuss any changes.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
+![Architecture Diagram](./docs/wp-diagram.png)
