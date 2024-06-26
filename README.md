@@ -35,22 +35,7 @@ Before you begin, ensure you have the following installed on your local machine:
 
 ## Usage
 
-1. **Build and Push Docker Image:**
-
-    Ensure your Docker image is built and pushed to ECR:
-
-    ```bash
-    # Build Docker image
-    docker build -t wp .
-
-    # Tag Docker image
-    docker tag wp:latest <AWS-ACCOUNT-ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/wp:latest
-
-    # Push Docker image
-    docker push <AWS-ACCOUNT-ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/wp:latest
-    ```
-
-2. **Apply Terraform Configuration:**
+1. **Apply Terraform Configuration:**
 
     Provide necessary variables such as `db_password` via CLI or environment variables:
 
@@ -65,6 +50,26 @@ Before you begin, ensure you have the following installed on your local machine:
     terraform apply
     ```
 
+2. **Build and Push Docker Image:**
+
+    Onse Terraform is applied, the ECR docker repository is ready.
+    Make the Docker image built and pushed to ECR:
+
+    ```bash
+    # Build Docker image
+    docker build -t wp .
+
+    # Tag Docker image
+    docker tag wp:latest <AWS-ACCOUNT-ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/wp:latest
+
+    # Login to AWS ECR
+    aws ecr get-login-password --region <AWS_REGION> | docker login --username AWS --password-stdin <AWS-ACCOUNT-ID>.dkr.ecr.<AWS_REGION>.amazonaws.com
+
+    # Push Docker image
+    docker push <AWS-ACCOUNT-ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/wp:latest
+    ```
+
+
 ## Configuration
 
 Customize your deployment by modifying the variables in `variables.tf`:
@@ -74,6 +79,7 @@ Customize your deployment by modifying the variables in `variables.tf`:
 - `db_name`: The database name
 - `s3_bucket_name`: The name of the S3 bucket for media storage
 - `ecs_task_family`: The ECS task family name
+
 
 ## Architecture
 
